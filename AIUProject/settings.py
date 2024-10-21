@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'AIUApp.apps.AiuappConfig',
 ]
 
 MIDDLEWARE = [
@@ -54,7 +56,7 @@ ROOT_URLCONF = 'AIUProject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'AIUAPP/templates')],  # Use os.path.join for correct path
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],  # Use os.path.join for correct path
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
