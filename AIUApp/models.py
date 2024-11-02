@@ -15,7 +15,7 @@ class Room(models.Model):
     description = models.TextField(null=True, blank=True)
     #participants = 
     updated = models.DateTimeField(auto_now=True) # takes the timestamp if a model is changed
-    created = models.DateTimeField(auto_now_add=True)# takes timestamp of when the model item was created.
+    created = models.DateTimeField(auto_now_add=True)# takes timestamp of when the model item was created
 
     def __str__(self):
         return self.name
