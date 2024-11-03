@@ -3,11 +3,13 @@
 <h1>AIU DEVTANDEMS HOME PAGE</h1>
 
 <div>
-    <a href="{% url 'create-room'%}">Create Room</a><br>
+    <a href="{% url 'create-room'%}">Create Room</a><br><br>
 
     <div>
         {% for room in rooms %}
             <div>
+                <a href="{% url 'updateroom' room.id %}">Update Room</a>&nbsp;&nbsp;
+                <a href="{% url 'deleteroom' room.id %}">Delete Room</a><br>
                 <span>@{{room.host.username}}</span>
                 <h5>{{ room.id }} -- <a href="{% url 'room' room.id %}"> {{ room.name }}</a> </h5>
                 <small>{{room.topic.name}}</small>
