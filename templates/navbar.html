@@ -1,7 +1,12 @@
-<a href="">
+<a href="{% url 'home' %}">
     <h1>AIULOGO</h1>
 </a>
 <hr>
+<form action="{% url 'home' %}" method="get">
+    <input type="text" name="q" placeholder="Search Rooms...">
+
+</form>
 {% block content %}
+
 
 {% endblock %}
