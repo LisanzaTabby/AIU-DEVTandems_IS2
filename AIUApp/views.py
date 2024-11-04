@@ -1,8 +1,25 @@
 from django.shortcuts import render, redirect
 from .models import Room, Topic
+from django.contrib.auth.models import User
+from django.contrib import messages
 from django.db.models import Q # allows us our query parameters in one basket so that we can have multiple query and search parameters such we can search using a topic, hostname or roomname
 from .forms import RoomForm
 # Create your views here.
+
+def loginPage(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        try:
+            user = User.objects.get(username=username)
+        except:
+            messages.error(request, 'User does not exist')
+            
+
+
+    context={}
+    return render(request, 'AIUApp/login_register.html', context)
 
 def index(request):
     q = request.GET.get('q') if request.GET.get('q') != None else ''
