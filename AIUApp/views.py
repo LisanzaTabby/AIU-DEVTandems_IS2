@@ -15,9 +15,6 @@ def loginPage(request):
             user = User.objects.get(username=username)
         except:
             messages.error(request, 'User does not exist')
-            
-
-
     context={}
     return render(request, 'AIUApp/login_register.html', context)
 
