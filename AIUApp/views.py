@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.db.models import Q # allows us our query parameters in one basket so that we can have multiple query and search parameters such we can search using a topic, hostname or roomname
+from django.contrib.auth.forms import UserCreationForm
 from .forms import RoomForm
 # Create your views here.
 
@@ -14,7 +15,7 @@ def loginPage(request):
     if request.user.is_authenticated:
         return redirect('home')
     if request.method == 'POST':
-        username = request.POST.get('username')
+        username = request.POST.get('username').lower()
         password = request.POST.get('password')
 
         try:
@@ -31,6 +32,21 @@ def loginPage(request):
             messages.error(request, 'Username OR Password does not exist!')
 
     context={'page':page}
+    return render(request, 'AIUApp/login_register.html', context)
+
+def registerPage(request):
+    form = UserCreationForm()
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.username = user.username.lower()
+            user.save()
+            login(request, user)
+            return redirect('home')
+        else:
+            messages.error(request, 'An error Occured during registration!')
+    context={'form':form}
     return render(request, 'AIUApp/login_register.html', context)
 
 def logoutUser(request):
