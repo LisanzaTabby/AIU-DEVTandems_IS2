@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
+from django.http import HttpResponse
 from .models import Room, Topic
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.db.models import Q # allows us our query parameters in one basket so that we can have multiple query and search parameters such we can search using a topic, hostname or roomname
@@ -8,6 +10,9 @@ from .forms import RoomForm
 # Create your views here.
 
 def loginPage(request):
+    page='login'
+    if request.user.is_authenticated:
+        return redirect('home')
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -25,7 +30,7 @@ def loginPage(request):
         else:
             messages.error(request, 'Username OR Password does not exist!')
 
-    context={}
+    context={'page':page}
     return render(request, 'AIUApp/login_register.html', context)
 
 def logoutUser(request):
@@ -47,7 +52,7 @@ def rooms(request, pk):
     room = Room.objects.get(id=pk)
     context={'room': room}
     return render(request, 'AIUApp/room.html', context)
-
+@login_required
 def create_room(request):
     form = RoomForm()
     if request.method == 'POST':
@@ -57,9 +62,12 @@ def create_room(request):
             return redirect('home')
     context={'form':form}
     return render(request, 'AIUApp/room_form.html', context)
+@login_required
 def updateRoom(request, pk):
     room = Room.objects.get(id=pk)
     form = RoomForm(instance=room)
+    if request.user != room.host:
+        return HttpResponse('You are not the host of this room!')
     if request.method == 'POST':
         form = RoomForm(request.POST, instance=room)# plus telling it which room to update using the instance variable
         if form.is_valid():
@@ -67,12 +75,15 @@ def updateRoom(request, pk):
             return redirect('home')
     context={'form':form}
     return render(request, 'AIUApp/room_form.html', context)
+@login_required
 def deleteRoom(request, pk):
     room = Room.objects.get(id=pk)
+    if request.user != room.host:
+        return HttpResponse('You are not the host of this room!')
     if request.method == 'POST':
         room.delete()
         return redirect('home')
-    return render(request, 'AIUApp/delete.html',{'obj':room})
+    return render(request, 'AIUApp/delete.html', {'obj':room})
 
 
 
