@@ -66,15 +66,17 @@ def index(request):
     return render(request, 'AIUApp/homepage.html', context)
 def rooms(request, pk):
     room = Room.objects.get(id=pk)
-    room_messages = room.message_set.all().order_by('-created')# we ar telling it get all a specific set of messages related to that specific room.
+    room_messages = room.message_set.all().order_by('-created')# we ar telling it get all a specific set of messages related to that specific room.Only for a Many-One R/ship thats when we use the _set.all()Method
+    participants = room.participants.all()# we use the all() for the many-Many r/ship
     if request.method == 'POST':
         message = Message.objects.create(
             user = request.user,
             room= room,
             body= request.POST.get('body')
         )
+        room.participants.add(request.user)# adds a user to the participants of a room
         return redirect('room', pk=room.id)
-    context={'room': room, 'room_messages':room_messages}
+    context={'room': room, 'room_messages':room_messages,'participants':participants}
     return render(request, 'AIUApp/room.html', context)
 @login_required
 def create_room(request):
