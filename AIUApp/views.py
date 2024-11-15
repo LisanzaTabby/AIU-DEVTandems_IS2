@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Room, Topic
+from .models import Room, Topic, Message
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
@@ -11,11 +11,11 @@ from .forms import RoomForm
 # Create your views here.
 
 def loginPage(request):
-    page='login'
+    page='login' # helps redirect/point a user to the register page or login page
     if request.user.is_authenticated:
         return redirect('home')
     if request.method == 'POST':
-        username = request.POST.get('username').lower()
+        username = request.POST.get('username').lower()# changing it to a lowercase
         password = request.POST.get('password')
 
         try:
@@ -39,8 +39,8 @@ def registerPage(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
-            user = form.save(commit=False)
-            user.username = user.username.lower()
+            user = form.save(commit=False)# saving the form and freezing it in time so that we ca be able to use the username from the form
+            user.username = user.username.lower()#updated to alowercase
             user.save()
             login(request, user)
             return redirect('home')
@@ -66,7 +66,15 @@ def index(request):
     return render(request, 'AIUApp/homepage.html', context)
 def rooms(request, pk):
     room = Room.objects.get(id=pk)
-    context={'room': room}
+    room_messages = room.message_set.all().order_by('-created')# we ar telling it get all a specific set of messages related to that specific room.
+    if request.method == 'POST':
+        message = Message.objects.create(
+            user = request.user,
+            room= room,
+            body= request.POST.get('body')
+        )
+        return redirect('room', pk=room.id)
+    context={'room': room, 'room_messages':room_messages}
     return render(request, 'AIUApp/room.html', context)
 @login_required
 def create_room(request):
