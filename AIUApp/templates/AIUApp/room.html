@@ -3,30 +3,51 @@
 {% block title %} DEV ROOMS {% endblock %}
 
 {% block content %}
-<h1>AIU DEVTANDEMS ROOMS</h1>
-<h2>{{ room.name }}</h2>
-
-<p>{{ room.description }}</p>
-
-<div class="comment-wrapper">
-    <h3>Conversation</h3>
-    <hr>
-    {% for message in room_messages %}
+<style>
+    .room-container{
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+    }
+</style>
+<div class="room-container">
     <div>
-        <small>@{{ message.user}}  {{ message.created|timesince }} ago</small>
-        <p>{{ message.body }}</p>
-        <hr>
-    </div>
-    {% endfor %}
-{% if request.user.is_authenticated %}
-    <div class="comment-form">
-        <form action="" method="post">
-            {% csrf_token %}
-            <input type="text" name="body"placeholder="Write Your Message here...">
-        </form>
-    </div>
-{% endif %}
+        <h1>AIU DEVTANDEMS ROOMS</h1>
 
+        <h2>{{ room.name }}</h2>
+
+        <p>{{ room.description }}</p>
+
+        <div class="comment-wrapper">
+            <h3>Conversation</h3>
+            <hr>
+            {% for message in room_messages %}
+            <div>
+                <a href="{%url 'delete-message' %}">Delete</a>
+                <small>@{{ message.user}}  {{ message.created|timesince }} ago</small>
+                <p>{{ message.body }}</p>
+                <hr>
+            </div>
+            {% endfor %}
+            {% if request.user.is_authenticated %}
+            <div class="comment-form">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <input type="text" name="body"placeholder="Write Your Message here...">
+                </form>
+            </div>
+            {% endif %}
+
+        </div>
+    </div>
+    <div>
+        <h3>Participants</h3>        
+        <hr>
+        {% for user in participants %}
+        <div>
+            <p>@{{user.username}}</p>
+        </div>
+        {% endfor %}
+    </div>
 </div>
 
 {% endblock %}
