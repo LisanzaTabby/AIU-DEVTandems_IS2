@@ -110,6 +110,15 @@ def deleteRoom(request, pk):
         room.delete()
         return redirect('home')
     return render(request, 'AIUApp/delete.html', {'obj':room})
+@login_required
+def deleteMessage(request, pk):
+    message = Message.objects.get(id=pk)
+    if request.user != message.user:
+        return HttpResponse('You are not the host of this room!')
+    if request.method == 'POST':
+        message.delete()
+        return redirect('home')
+    return render(request, 'AIUApp/delete.html', {'obj':message})
 
 
 
