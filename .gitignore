@@ -399,3 +399,5 @@ FodyWeavers.xsd
 
 # DIO Diagrams
 *.dio
+# virtual environment
+Env/
