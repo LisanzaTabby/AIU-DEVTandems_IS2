@@ -3,6 +3,9 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
+# virtual environment
+.Env/
+
 # User-specific files
 *.rsuser
 *.suo
@@ -399,5 +402,3 @@ FodyWeavers.xsd
 
 # DIO Diagrams
 *.dio
-# virtual environment
-Env/
