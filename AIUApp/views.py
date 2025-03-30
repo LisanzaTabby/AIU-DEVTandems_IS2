@@ -119,6 +119,3 @@ def deleteMessage(request, pk):
         message.delete()
         return redirect('home')
     return render(request, 'AIUApp/delete.html', {'obj':message})
-
-
-
