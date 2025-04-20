@@ -62,11 +62,12 @@ def index(request):
         )
     room_count = rooms.count()
     topics = Topic.objects.all()
-    context={'rooms': rooms, 'topics': topics, 'room_count': room_count}
+    room_messages = Message.objects.filter(Q(room__topic__name__icontains=q))# we are ordering the messages by the created date in descending order
+    context={'rooms': rooms, 'topics': topics, 'room_count': room_count, 'room_messages': room_messages}
     return render(request, 'AIUApp/homepage.html', context)
 def rooms(request, pk):
     room = Room.objects.get(id=pk)
-    room_messages = room.message_set.all().order_by('-created')# we ar telling it get all a specific set of messages related to that specific room.Only for a Many-One R/ship thats when we use the _set.all()Method
+    room_messages = room.message_set.all()# we ar telling it get all a specific set of messages related to that specific room.Only for a Many-One R/ship thats when we use the _set.all()Method
     participants = room.participants.all()# we use the all() for the many-Many r/ship
     if request.method == 'POST':
         message = Message.objects.create(
@@ -75,6 +76,7 @@ def rooms(request, pk):
             body= request.POST.get('body')
         )
         room.participants.add(request.user)# adds a user to the participants of a room
+        messages.success(request, 'Message sent successfully!')
         return redirect('room', pk=room.id)
     context={'room': room, 'room_messages':room_messages,'participants':participants}
     return render(request, 'AIUApp/room.html', context)
@@ -85,6 +87,7 @@ def create_room(request):
         form = RoomForm(request.POST)# passing all tghe data from the form into the cariable form
         if form.is_valid():
             form.save()
+            messages.success(request, 'Room created successfully!')
             return redirect('home')
     context={'form':form}
     return render(request, 'AIUApp/room_form.html', context)
@@ -98,6 +101,7 @@ def updateRoom(request, pk):
         form = RoomForm(request.POST, instance=room)# plus telling it which room to update using the instance variable
         if form.is_valid():
             form.save()
+            messages.success(request, 'Room updated successfully!')
             return redirect('home')
     context={'form':form}
     return render(request, 'AIUApp/room_form.html', context)
@@ -108,6 +112,7 @@ def deleteRoom(request, pk):
         return HttpResponse('You are not the host of this room!')
     if request.method == 'POST':
         room.delete()
+        messages.success(request, 'Room deleted successfully!')
         return redirect('home')
     return render(request, 'AIUApp/delete.html', {'obj':room})
 @login_required
@@ -117,5 +122,6 @@ def deleteMessage(request, pk):
         return HttpResponse('You are not the host of this room!')
     if request.method == 'POST':
         message.delete()
+        messages.success(request, 'Message deleted successfully!')
         return redirect('home')
     return render(request, 'AIUApp/delete.html', {'obj':message})
