@@ -10,58 +10,18 @@
 
 <div class ="home-container">
     <div>
-        <h3>Browse Topics</h3>
-        <hr>
-        <div>
-            <a href="{% url 'home' %}">All Topics</a>
-        </div>
-        {% for topic in topics %}
-        <div>
-            <a href="{% url 'home' %}?q={{topic.name}}">{{topic.name}}</a>
-        </div>
-
-        {% empty %}
-
-        {% endfor%}
+        
+        {% include 'AIUApp/topics_component.html' %}
 
     </div>
     <div>
         <h5>{{room_count}} rooms available</h5>
         <a href="{% url 'create-room'%}">Create Room</a><br><br>
-        <div>
-            {% for room in rooms %}
-            <div>
-                {% if request.user == room.host %}
-                <a href="{% url 'updateroom' room.id %}">Update Room</a>&nbsp;&nbsp;
-                <a href="{% url 'deleteroom' room.id %}">Delete Room</a><br>
-                {% endif %}
-                <span>@{{room.host.username}}</span>
-                <h5>{{ room.id }} -- <a href="{% url 'room' room.id %}"> {{ room.name }}</a> </h5>
-                <small>{{room.topic.name}}</small>
-                <hr>
-            </div>
-            {% empty %}
-            <div>
-                <h3>No rooms Found</h3>
-            </div>
-            {% endfor %}
-        </div>
+        {%include 'AIUApp/feed_component.html' %}
+        
     </div>
     <div>
-        <h3>Recent Activity</h3>
-        <hr>
-        {% for message in room_messages %}
-        <div>
-            <small>@{{message.user}} {{message.created|timesince}}</small>
-            <small>replied to "{{message.room}}"</small>
-
-            <p>{{message}}</p>
-            {% if request.user == message.user %}
-                <a href="{% url 'delete-message' message.id %}">Delete</a>
-                {% endif %}
-                <hr>
-        </div>        
-        {% endfor %}
+        {% include 'AIUApp/activity_component.html' %}
     </div>
     
 </div>
