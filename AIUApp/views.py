@@ -81,6 +81,15 @@ def rooms(request, pk):
     context={'room': room, 'room_messages':room_messages,'participants':participants}
     return render(request, 'AIUApp/room.html', context)
 @login_required
+def userProfile(request, pk):
+    user = User.objects.get(id=pk)
+    rooms = user.room_set.all()# we are getting all the rooms that a user has created
+    room_messages = user.message_set.all()# we are getting all the messages that a user has sent
+    topics = Topic.objects.all()
+    context = {'user': user, 'rooms': rooms, 'room_messages': room_messages, 'topics': topics}
+    return render(request, 'AIUApp/user_profile.html', context)
+
+@login_required
 def create_room(request):
     form = RoomForm()
     if request.method == 'POST':
