@@ -93,9 +93,11 @@ def userProfile(request, pk):
 def create_room(request):
     form = RoomForm()
     if request.method == 'POST':
-        form = RoomForm(request.POST)# passing all tghe data from the form into the cariable form
+        form = RoomForm(request.POST)# passing all the data from the form into the cariable form
         if form.is_valid():
-            form.save()
+            room = form.save(commit=False)
+            room.host = request.user# we are assigning the host of the room to the current user
+            room.save()
             messages.success(request, 'Room created successfully!')
             return redirect('home')
     context={'form':form}
