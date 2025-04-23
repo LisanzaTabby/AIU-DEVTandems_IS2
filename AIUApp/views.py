@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponse
 from .models import Room, Topic, Message
 from django.contrib.auth.models import User
@@ -66,7 +66,7 @@ def index(request):
     context={'rooms': rooms, 'topics': topics, 'room_count': room_count, 'room_messages': room_messages}
     return render(request, 'AIUApp/homepage.html', context)
 def rooms(request, pk):
-    room = Room.objects.get(id=pk)
+    room = get_object_or_404(Room, id=pk)
     room_messages = room.message_set.all()# we ar telling it get all a specific set of messages related to that specific room.Only for a Many-One R/ship thats when we use the _set.all()Method
     participants = room.participants.all()# we use the all() for the many-Many r/ship
     if request.method == 'POST':
@@ -82,7 +82,7 @@ def rooms(request, pk):
     return render(request, 'AIUApp/room.html', context)
 @login_required
 def userProfile(request, pk):
-    user = User.objects.get(id=pk)
+    user = get_object_or_404(User, id=pk)
     rooms = user.room_set.all()# we are getting all the rooms that a user has created
     room_messages = user.message_set.all()# we are getting all the messages that a user has sent
     topics = Topic.objects.all()
@@ -104,7 +104,7 @@ def create_room(request):
     return render(request, 'AIUApp/room_form.html', context)
 @login_required
 def updateRoom(request, pk):
-    room = Room.objects.get(id=pk)
+    room = get_object_or_404(Room, id=pk)
     form = RoomForm(instance=room)
     if request.user != room.host:
         return HttpResponse('You are not the host of this room!')
@@ -118,7 +118,7 @@ def updateRoom(request, pk):
     return render(request, 'AIUApp/room_form.html', context)
 @login_required
 def deleteRoom(request, pk):
-    room = Room.objects.get(id=pk)
+    room = get_object_or_404(Room, id=pk)
     if request.user != room.host:
         return HttpResponse('You are not the host of this room!')
     if request.method == 'POST':
@@ -127,12 +127,16 @@ def deleteRoom(request, pk):
         return redirect('home')
     return render(request, 'AIUApp/delete.html', {'obj':room})
 @login_required
+@login_required
 def deleteMessage(request, pk):
-    message = Message.objects.get(id=pk)
+    message = get_object_or_404(Message, id=pk)
+
     if request.user != message.user:
         return HttpResponse('You are not the host of this room!')
+
     if request.method == 'POST':
         message.delete()
         messages.success(request, 'Message deleted successfully!')
-        return redirect('home')
-    return render(request, 'AIUApp/delete.html', {'obj':message})
+        return redirect('room', pk=message.room.id)
+
+    return render(request, 'AIUApp/delete.html', {'obj': message})

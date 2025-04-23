@@ -267,7 +267,7 @@ a {
 
 .header {
   padding: 1.5rem;
-  background-color: var(--color-dark);
+  background-color: #040c0c;
 }
 
 .header > .container {
@@ -283,8 +283,8 @@ a {
 }
 
 .header__logo > img {
-  height: 3.2rem;
-  width: 3.2rem;
+  height: 5.2rem;
+  width: 5.2rem;
 }
 
 .header__logo > h1 {
