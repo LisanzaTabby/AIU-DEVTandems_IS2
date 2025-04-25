@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'AIUApp.apps.AiuappConfig',
 ]
 
+AUTH_USER_MODEL = 'AIUApp.User'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -79,11 +81,11 @@ WSGI_APPLICATION = 'AIUProject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'aiu_devtandems',
+        'NAME': 'aiudevtandems',
         'USER': 'postgres',
         'PASSWORD': 'lisanza123',
         'HOST': '127.0.0.1',
-        'PORT': '5433',
+        'PORT': '5432',
     }
         
 }
