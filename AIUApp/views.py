@@ -1,12 +1,10 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponse
-from .models import Room, Topic, Message
-from django.contrib.auth.models import User
+from .models import Room, Topic, Message, User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.db.models import Q # allows us our query parameters in one basket so that we can have multiple query and search parameters such we can search using a topic, hostname or roomname
-from django.contrib.auth.forms import UserCreationForm
 from .forms import *
 
 # Create your views here.
@@ -16,15 +14,15 @@ def loginPage(request):
     if request.user.is_authenticated:
         return redirect('home')
     if request.method == 'POST':
-        username = request.POST.get('username').lower()# changing it to a lowercase
+        email = request.POST.get('email').lower()# changing it to a lowercase
         password = request.POST.get('password')
 
         try:
-            user = User.objects.get(username=username)
+            user = User.objects.get(email=email)
         except:
             messages.error(request, 'User does not exist')
 
-        user = authenticate(request, username=username, password=password)
+        user = authenticate(request, email=email, password=password)
 
         if user is not None:
             login(request, user)
@@ -36,9 +34,9 @@ def loginPage(request):
     return render(request, 'AIUApp/login_register.html', context)
 
 def registerPage(request):
-    form = UserCreationForm()
+    form = MyUserCreationForm()
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = MyUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)# saving the form and freezing it in time so that we ca be able to use the username from the form
             user.username = user.username.lower()#updated to alowercase
@@ -62,7 +60,7 @@ def index(request):
         Q(description__icontains=q) 
         )
     room_count = rooms.count()
-    topics = Topic.objects.all()
+    topics = Topic.objects.all()[0:5]# we are getting the first 5 topics
     room_messages = Message.objects.filter(Q(room__topic__name__icontains=q))# we are ordering the messages by the created date in descending order
     context={'rooms': rooms, 'topics': topics, 'room_count': room_count, 'room_messages': room_messages}
     return render(request, 'AIUApp/homepage.html', context)
@@ -157,10 +155,21 @@ def updateUser(request):
     user = request.user
     form = UserForm(instance=user) 
     if request.method == 'POST':
-        form = UserForm(request.POST, instance=user)
+        form = UserForm(request.POST, request.FILES, instance=user)
         if form.is_valid():
             form.save()
             messages.success(request, 'User profile updated successfully!')
             return redirect('user-profile', pk=user.id)
     context = {'form': form}
     return render(request, 'AIUApp/update_user_profile.html', context)
+
+def topicsPage(request):
+    q = request.GET.get('q') if request.GET.get('q') != None else ''
+    topics = Topic.objects.filter(name__icontains=q)
+    context = {'topics': topics, 'rooms': rooms}
+    return render(request, 'AIUApp/topics.html', context)
+
+def activitiesPage(request):
+    room_messages = Message.objects.all()
+    context = {'room_messages': room_messages}
+    return render(request, 'AIUApp/activity.html', context)
