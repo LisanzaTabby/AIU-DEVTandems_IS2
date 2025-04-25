@@ -7,7 +7,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.db.models import Q # allows us our query parameters in one basket so that we can have multiple query and search parameters such we can search using a topic, hostname or roomname
 from django.contrib.auth.forms import UserCreationForm
-from .forms import RoomForm
+from .forms import *
+
 # Create your views here.
 
 def loginPage(request):
@@ -92,29 +93,39 @@ def userProfile(request, pk):
 @login_required
 def create_room(request):
     form = RoomForm()
+    topics = Topic.objects.all()
     if request.method == 'POST':
-        form = RoomForm(request.POST)# passing all the data from the form into the cariable form
-        if form.is_valid():
-            room = form.save(commit=False)
-            room.host = request.user# we are assigning the host of the room to the current user
-            room.save()
-            messages.success(request, 'Room created successfully!')
-            return redirect('home')
-    context={'form':form}
+        topic_name = request.POST.get('topic')# we are getting the topic name from the form 
+        topic, created = Topic.objects.get_or_create(name=topic_name)# we are getting or creating the topic
+        Room.objects.create(
+            host = request.user,
+            topic = topic,
+            name = request.POST.get('name'),
+            description = request.POST.get('description'),
+        )
+        messages.success(request, 'Room created successfully!')
+        return redirect('home')
+    context={'form':form,'topics':topics}
     return render(request, 'AIUApp/room_form.html', context)
 @login_required
 def updateRoom(request, pk):
     room = get_object_or_404(Room, id=pk)
+    topics = Topic.objects.all()
     form = RoomForm(instance=room)
     if request.user != room.host:
         return HttpResponse('You are not the host of this room!')
     if request.method == 'POST':
-        form = RoomForm(request.POST, instance=room)# plus telling it which room to update using the instance variable
-        if form.is_valid():
-            form.save()
+        if request.method == 'POST':
+            topic_name = request.POST.get('topic')# we are getting the topic name from the form 
+            topic, created = Topic.objects.get_or_create(name=topic_name)
+            room.name = request.POST.get('name')
+            room.topic = topic
+            room.description = request.POST.get('description')
+            room.save()
+
             messages.success(request, 'Room updated successfully!')
             return redirect('home')
-    context={'form':form}
+    context={'form':form, 'topics':topics, 'room':room}
     return render(request, 'AIUApp/room_form.html', context)
 @login_required
 def deleteRoom(request, pk):
@@ -140,3 +151,16 @@ def deleteMessage(request, pk):
         return redirect('room', pk=message.room.id)
 
     return render(request, 'AIUApp/delete.html', {'obj': message})
+
+@login_required
+def updateUser(request):
+    user = request.user
+    form = UserForm(instance=user) 
+    if request.method == 'POST':
+        form = UserForm(request.POST, instance=user)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'User profile updated successfully!')
+            return redirect('user-profile', pk=user.id)
+    context = {'form': form}
+    return render(request, 'AIUApp/update_user_profile.html', context)

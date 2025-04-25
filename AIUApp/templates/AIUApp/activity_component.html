@@ -4,7 +4,6 @@
   </div>
   <div class="activities__box">
 {% for message in room_messages %}
-
     <div class="activities__boxHeader roomListRoom__header">
       <a href="{% url 'user-profile' message.user.id %}" class="roomListRoom__author">
         <div class="avatar avatar--small">
@@ -33,7 +32,8 @@
       <div class="activities__boxRoomContent">
         {{message}}
       </div>
-    </div>
+    </div><br>
+    <hr>
 {% endfor %}
   </div>
 
