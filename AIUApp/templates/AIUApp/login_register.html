@@ -1,43 +1,6 @@
 {% extends 'main.html' %}
-
+{% load socialaccount %}
 {% block content %}
-<<<<<<< HEAD
-
-{% if page == 'login' %}
-<div>
-    <form method="post"action="">
-        {% csrf_token %}
-
-        <label>Username: </label>
-        <input type="text" name="username" placeholder="Enter username">
-
-        <label>Password: </label>
-        <input type="password" name="password" placeholder="Enter password">
-
-        <input type="submit" value="Login">
-
-    </form>
-
-    <p>Haven't Signed up yet?</p>
-    <a href="{% url 'register' %}">Sign Up</a>
-    
-</div>
-{% else %}
-<div>
-    <form method="post"action="">
-        {% csrf_token %}
-        {{form.as_p}}
-        <input type="submit" value="Register">
-
-    </form>
-    <p>Already Signed Up?</p>
-    <a href="{% url 'login' %}">Log in</a>
-
-</div>
-{% endif %}
-
-{% endblock %}
-=======
 {% if page == 'login' %}
 <main class="auth layout">
   <div class="container">
@@ -69,19 +32,14 @@
           <hr><br>
           <div class="email_login">
             <div class="email_login_icons">
-              <a href="">
+              <a href="{% provider_login_url 'google' %}">
                 <i class="fa-brands fa-google fa-2xl" style="color: #e93644;"></i>
               </a>
             </div>
             <div class="email_login_icons">
-              <a href="">
+              <a href="{% provider_login_url 'github' %}">
                 <i class="fa-brands fa-github fa-2xl" style="color: #e93644;"></i>  
               </a>            
-            </div>
-            <div class="email_login_icons">
-              <a href="">
-                <i class="fa-solid fa-envelope fa-2xl" style="color: #e93644;"></i>
-              </a>
             </div>
           </div>
           <button class="btn btn--main" type="submit">
@@ -158,19 +116,14 @@
           <hr><br>
           <div class="email_login">
             <div class="email_login_icons">
-              <a href="">
+              <a href="{% provider_login_url 'google' %}">
                 <i class="fa-brands fa-google fa-2xl" style="color: #e93644;"></i>
               </a>
             </div>
             <div class="email_login_icons">
-              <a href="">
+              <a href="{% provider_login_url 'github' %}">
                 <i class="fa-brands fa-github fa-2xl" style="color: #e93644;"></i>  
               </a>            
-            </div>
-            <div class="email_login_icons">
-              <a href="">
-                <i class="fa-solid fa-envelope fa-2xl" style="color: #e93644;"></i>
-              </a>
             </div>
           </div>
 
@@ -184,4 +137,3 @@
 </main>
 {% endif %}
 {% endblock %}
->>>>>>> a694d73707383edfdc12f1d851deb4fd708d9061

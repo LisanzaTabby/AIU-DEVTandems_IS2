@@ -6,6 +6,18 @@ class User(AbstractUser):
     email = models.EmailField(unique=True, null=True, blank=True)
     bio = models.TextField(null=True, blank=True)
     avatar = models.ImageField(null=True, default="avatar.svg", blank=True)
+    
+    # user socials
+    linkedin = models.URLField(max_length=300, null=True, blank=True)
+    github = models.URLField(max_length=300, null=True, blank=True)
+    stackoverflow = models.URLField(max_length=300, null=True, blank=True)
+    twitter = models.URLField(max_length=300, null=True, blank=True)
+
+    # New fields for career/developer profile
+    skills = models.TextField(null=True, blank=True, help_text="List of skills, separated by commas (e.g. Python, Django, React)")
+    experience = models.TextField(null=True, blank=True, help_text="Describe projects, internships, or work experience")
+    goals = models.TextField(null=True, blank=True, help_text="Describe your learning goals and areas to improve")
+
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = [] # fields that are required when creating a user
 
