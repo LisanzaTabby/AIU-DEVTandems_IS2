@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
 
 :root {
-  --color-main: #e93644;
+  --color-main: #636364;
   --color-main-light: #e1f6fb;
   --color-dark: #3f4156;
   --color-dark-medium: #51546e;
@@ -86,7 +86,7 @@ a {
 .btn--link {
   border-radius: 0;
   padding: 0;
-  color: var(--color-main);
+  color: #949c9c;
   box-shadow: none;
 }
 
@@ -95,17 +95,18 @@ a {
 }
 
 .btn--main {
-  background-color: var(--color-main);
-  color: var(--color-dark);
+  background-color: #949c9c;
+  color: #fff;
 }
 
 .btn:hover {
-  opacity: 0.9;
+    background-color: var(--color-dark-light);
+    opacity: 0.9;
 }
 
 .btn--dark {
-  background-color: var(--color-dark-light);
-  color: var(--color-light);
+  background-color: #fc4b0b;
+  color: #fff;
 }
 
 .btn > svg {
@@ -119,7 +120,7 @@ a {
   font-size: 1.4rem;
   font-weight: 700;
   padding: 6px 2.5rem;
-  color: var(--color-main);
+  color: #e5e5e5;
   background: transparent;
   border: 2px solid var(--color-main);
 }
@@ -135,7 +136,7 @@ a {
   position: relative;
   display: inline-block;
   border-radius: 50%;
-  border: 2px solid #e93644;
+  border: 2px solid #646c6c;
 }
 
 .avatar img {
@@ -149,7 +150,7 @@ a {
   content: "";
   display: block;
   position: absolute;
-  background-color: var(--color-gray);
+  background-color: #e93644;
   z-index: 111;
   border-radius: 50%;
   border: 0.3rem solid var(--color-dark);
@@ -213,7 +214,7 @@ a {
   position: absolute;
   top: 5rem;
   right: 0.5rem;
-  background: var(--color-dark-light);
+  background: #7f676a;
   border-radius: 5px;
   box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.15);
   overflow: hidden;
@@ -227,7 +228,7 @@ a {
 .dropdown-menu a {
   padding: 1.2rem 4rem;
   display: block;
-  color: #7f676a !important;
+  color: #fff !important;
   font-weight: 500;
   font-size: 1.4rem;
 }
@@ -241,7 +242,7 @@ a {
 }
 
 .dropdown-menu a svg {
-  fill: var(--color-light);
+  fill: #fff;
 }
 
 .mobile-menu {
@@ -284,17 +285,17 @@ a {
 
 .header__logo > img {
   height: 7.2rem;
-  width: 7.2rem;
+  width: 10rem;
 }
 
 .header__logo > h1 {
   font-weight: 700;
   font-size: 2rem;
-  color: var(--color-light);
+  color: #fff;
 }
 
 .header__search > label {
-  background-color: #949c9c;
+  background-color: #2f3037;
   padding: 1.3rem 1rem;
   display: flex;
   align-items: center;
@@ -303,7 +304,7 @@ a {
 }
 
 .header__search svg {
-  fill: var(--color-light);
+  fill: #fff;
   width: 2rem;
   height: 2rem;
   margin-left: 1rem;
@@ -350,7 +351,7 @@ a {
   align-items: center;
   font-weight: 500;
   text-decoration: none;
-  color: var(--color-gray);
+  color: #fff;
 }
 
 .header__menu img {
@@ -362,7 +363,7 @@ a {
 }
 
 .header__menu span {
-  color: var(--color-main);
+  color: #949c9c;
   font-weight: 500;
   font-size: 1.4rem;
   display: block;
@@ -371,7 +372,7 @@ a {
 .header__menu svg {
   width: 1.6rem;
   height: 1.6rem;
-  fill: var(--color-dark-light);
+  fill: #949c9c;
 }
 
 .dropdown-button {
@@ -382,7 +383,7 @@ a {
 }
 
 .dropdown-button:hover svg {
-  fill: var(--color-main);
+  fill: #fff;
 }
 
 /*==============================
@@ -422,23 +423,24 @@ a {
 /*========== Layout Box ==========*/
 
 .layout__box {
-  width: 90%;
-  max-width: 48rem;
-  min-height: 40rem;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -46%);
-  background-color: var(--color-dark);
-  border-radius: 1rem;
-  box-shadow: 1px 1px 6px 3px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-}
+    width: 90%;
+    max-width: 48rem;
+    min-height: 40rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-15%);
+    background-color: #2f3037;
+    border-radius: 1rem;
+    box-shadow: 1px 1px 6px 3px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+
 
 .layout__boxHeader {
   display: flex;
   padding: 1.5rem;
-  background-color: var(--color-dark-light);
+  background-color: #e93644;
 }
 
 .layout__boxTitle {
@@ -449,14 +451,14 @@ a {
 
 .layout__boxTitle h3 {
   text-transform: uppercase;
-  font-weight: 500;
-  color: var(--color-light);
+  font-weight: 700;
+  color: #fff;
 }
 
 .layout__boxTitle svg {
   width: 1.6rem;
   height: 1.6rem;
-  fill: var(--color-main);
+  fill: #fff;
 }
 
 .layout__body {
@@ -509,7 +511,7 @@ a {
 
 .form__group input:focus,
 .form__group textarea:focus {
-  border-color: var(--color-main);
+  border-color: #e93644;
 }
 
 .form__group textarea {
@@ -551,6 +553,21 @@ a {
 .form__avatar label:hover {
   text-decoration: underline;
 }
+.email_login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+.email_login .email_login_icons a{
+  padding: 1rem 2rem;
+  border-radius: 5px;
+}
+.email_login .email_login_icons a:hover{
+  background-color: #636364;
+  color: #fff;
+}
 
 /*==============================
 =>  Topics
@@ -563,7 +580,7 @@ a {
 .topics__header h2 {
   text-transform: uppercase;
   font-weight: 500;
-  color: var(--color-dark-light);
+  color: #b2bdbd;
 }
 
 .topics__list {
@@ -575,22 +592,23 @@ a {
   justify-content: space-between;
   margin-bottom: 3rem;
   font-weight: 500;
-  color: var(--color-light-gray);
+  color: #b2bdbd;
   transition: all 0.3s ease-in-out;
 }
 
 .topics__list li a.active,
 .topics__list li a:hover {
-  color: var(--color-main);
+  color: #e93644;
 }
 
 .topics__list li a span {
   padding: 0.5rem 1rem;
-  background-color: var(--color-dark);
+  background-color: #3b3d3d;
   border-radius: 3px;
   font-size: 1.3rem;
   font-weight: 700;
   letter-spacing: 1px;
+  color: #fff;
 }
 
 .topics-page a:hover {
@@ -635,14 +653,15 @@ a {
 
 .roomList__header p {
   font-weight: 500;
-  color: var(--color-dark-light);
+  color: #949c9c;
+  text-transform: uppercase;
 }
 
 /*========== Room List Room ==========*/
 
 .roomListRoom {
   margin-bottom: 2.4rem;
-  background-color: var(--color-dark);
+  background-color: #424242;
   border-radius: 1rem;
   padding: 2rem;
 }
@@ -652,7 +671,10 @@ a {
   justify-content: space-between;
   align-items: center;
 }
-
+.roomListRoom__header .author{
+    color: #e93644;
+    font-size: 2rem;
+}
 .roomListRoom__author {
   font-weight: 500;
   display: flex;
@@ -674,7 +696,6 @@ a {
 
 .roomListRoom__actions svg {
   fill: var(--color-main);
-
   width: 1.6rem;
   height: 1.6rem;
 }
@@ -685,14 +706,15 @@ a {
 
 .roomListRoom__content a {
   font-size: 2rem;
-  font-weight: 500;
+  font-weight: 600;
+  text-transform: uppercase;
   margin-bottom: 1.5rem;
-  color: var(--color-light);
+  color: #fff;
   transition: all 0.3s ease-in-out;
 }
 
 .roomListRoom__content a:hover {
-  color: var(--color-main);
+  color: #2f3037;
 }
 
 .roomListRoom__meta {
@@ -704,7 +726,7 @@ a {
 }
 
 .roomListRoom__joined {
-  color: var(--color-light-gray);
+  color: #cfcfcf;
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -713,17 +735,18 @@ a {
 }
 
 .roomListRoom__joined svg {
-  fill: var(--color-main);
+  fill: #cfcfcf;
   width: 1.6rem;
   height: 1.6rem;
 }
 
 .roomListRoom__topic {
   padding: 5px 1.5rem;
-  background-color: var(--color-dark-medium);
+  background-color: #636364;
   border-radius: 5rem;
-  font-weight: 500;
-  font-size: 1.3rem;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #cfcfcf;
 }
 
 /*==============================
@@ -731,7 +754,7 @@ a {
 ================================*/
 
 .activities {
-  background: var(--color-dark);
+  background: #424242;
   border-radius: 5px;
   overflow: hidden;
 }
@@ -739,28 +762,30 @@ a {
 .activities__header h2 {
   background-color: var(--color-dark-light);
   text-transform: uppercase;
-  font-weight: 500;
+  font-weight: 700;
   padding: 1rem 1.5rem;
   color: var(--color-light);
   letter-spacing: 1px;
   font-size: 1.4rem;
+  text-align: center;
 }
 
 .activities__box {
   margin: 1.5rem;
   padding: 1.5rem;
-  border: 2px solid var(--color-dark-medium);
+  border: 2px solid #b7b7b7;
   border-radius: 5px;
 }
 
 .activities__boxHeader p {
-  font-size: 1.4rem;
-  line-height: 1.3;
+  font-size: 1.7rem;
+  color: #e93644;
+  line-height: 2;
 }
 
 .activities__boxHeader p span {
-  color: var(--color-gray);
-  font-size: 1.2rem;
+  color: #9e9a9a;
+  font-size: 1.5rem;
   display: block;
 }
 
@@ -771,21 +796,25 @@ a {
 .activities__boxContent {
   font-size: 1.4rem;
 }
+.activities__boxContent a{
+    font-weight: 700;
+    color: #fff;
 
+}
 .activities__boxContent a:hover {
   text-decoration: underline;
 }
 
 .activities__boxRoomContent {
   background: var(--color-bg);
-  padding: 1rem;
+  padding: 2rem;
   border-radius: 5px;
   margin-top: 1rem;
   margin-left: -4.2rem;
 }
 
 .roomListRoom__actions svg {
-  fill: var(--color-light-gray);
+  fill: #e93644;
 }
 
 /*==============================
@@ -866,13 +895,14 @@ a {
 
 .profile__info h3 {
   font-size: 2rem;
-  color: var(--color-light);
-  font-weight: 400;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 700;
 }
 
 .profile__info p {
-  color: var(--color-main);
-  font-weight: 500;
+  color: #b2bdbd;
+  font-weight: 600;
   margin-bottom: 1rem;
 }
 
@@ -880,9 +910,9 @@ a {
   margin-top: 2rem;
 }
 
-.profile__about h3 {
+.profile__about h2 {
   text-transform: uppercase;
-  color: var(--color-dark-light);
+  color: #fff;
   margin-bottom: 0.5rem;
 }
 
@@ -891,7 +921,19 @@ a {
 }
 
 .profile-page .roomList__header h2 {
-  color: var(--color-dark-light);
+  color: #fff;
+  font-weight: 700;
+}
+.socials {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+  gap: 2rem;    
+}
+.socials a {
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  font-size: 2rem;
 }
 
 /*==============================
@@ -900,7 +942,7 @@ a {
 
 .room,
 .participants {
-  background: var(--color-dark);
+  background:  #424242;
   max-height: 87.5vh;
   border-radius: 0.7rem;
   overflow: hidden;
@@ -968,7 +1010,7 @@ a {
   overflow-y: auto;
   position: absolute;
   width: 95%;
-  background: var(--color-dark);
+  background:  #424242;
   z-index: 999;
   top: 4.4rem;
   padding-top: 2rem;
@@ -1008,12 +1050,12 @@ a {
 .room__info h3 {
   font-size: 2.4rem;
   font-weight: 500;
-  color: var(--color-main);
+  color: #fff;
 }
 
 .room__hosted p {
   text-transform: uppercase;
-  color: var(--color-gray);
+  color: #e1f6fb;
   font-size: 1.2rem;
   font-weight: 700;
   line-height: 2;
@@ -1024,17 +1066,19 @@ a {
   gap: 1rem;
   align-items: center;
   margin-bottom: 1rem;
+  font-size: 2rem;
   transition: all 0.3s ease-in-out;
 }
 
 .room__author:hover {
   text-decoration: underline;
+  color: #fc4b0b;
 }
 
 .room__topics {
   padding: 0.5rem 1.5rem;
   background: var(--color-dark-light);
-  color: var(--color-light);
+  color: #fff;
   display: inline-block;
   font-size: 1.4rem;
   border-radius: 1.5rem;
@@ -1054,7 +1098,7 @@ a {
 }
 
 .threads {
-  background: var(--color-bg);
+  background: var(--color-dark-light);
   border-radius: 0.7rem;
   overflow-y: auto;
   height: 100%;
@@ -1063,7 +1107,7 @@ a {
 }
 
 .thread {
-  border-left: 2px solid var(--color-dark);
+  border-left: 2px solid #040c0c;
   padding-left: 1rem;
   margin: 2rem 0;
   padding: 2rem;
@@ -1076,29 +1120,38 @@ a {
 }
 
 .thread__top svg {
-  fill: var(--color-dark-light);
+  fill: #fc4b0b;
 }
 
 .thread__author {
   display: flex;
   align-items: center;
   gap: 1.5rem;
-  font-size: 1.4rem;
+  font-size: 1.9rem;
+  color: #fff;
 }
-
 .thread__authorInfo {
   display: flex;
   align-items: center;
   gap: 1rem;
+  font-weight: 600;
+  font-size: 2rem;
 }
-
+.thread__authorInfo:hover {
+    text-decoration: underline;
+    color: #fc4b0b;
+}
+.thread__delete svg:hover{
+    color: #fc4b0b;
+}
 .thread__details {
   font-size: 1.4rem;
   margin-top: 0.5rem;
+  color: #fff;
 }
 
 .room__message {
-  padding: 2rem;
+  padding: 3rem;
   position: absolute;
   z-index: 111;
   bottom: 0;
@@ -1109,7 +1162,7 @@ a {
 
 .room__message > form > input {
   resize: none;
-  background-color: var(--color-dark-light);
+  background-color: #2d2d39;
   color: var(--color-light);
   border: none;
   outline: none;
@@ -1124,11 +1177,11 @@ a {
 }
 
 .room__message > form > input::placeholder {
-  color: var(--color-light-gray);
+  color: #ead0d3;
 }
 
 .participants__top span {
-  color: var(--color-main);
+  color: #ead0d3;
   font-size: 1.3rem;
   text-transform: none;
 }
@@ -1153,13 +1206,13 @@ a {
 }
 
 .participant p {
-  color: var(--color-light-gray);
-  line-height: 1.2;
+  color: #fff;
+  line-height: 1.5;
 }
 
 .participant span {
   display: block;
   font-weight: 500;
-  color: var(--color-main);
+  color: #e93644;
   font-weight: 1.4rem;
 }

@@ -28,6 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -37,9 +38,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+
+    # Auth Apps
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.github',
 
     'AIUApp.apps.AiuappConfig',
 ]
+SITE_ID = 1
 
 AUTH_USER_MODEL = 'AIUApp.User'
 
@@ -51,6 +61,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
 ]
 
 ROOT_URLCONF = 'AIUProject.urls'
@@ -109,7 +120,11 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
+#Authentication backends
+AUTHENTICATION_BACKENDS =(
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
@@ -142,3 +157,48 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
+SOCIALACCOUNT_QUERY_EMAIL = True
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        # For each OAuth based provider, either add a ``SocialApp``
+        # (``socialaccount`` app) containing the required client
+        # credentials, or list them here:
+        'APP': {
+            'client_id': '185735621976-i0p8ltkgvitv067ipjb3gl1gs2qqvtde.apps.googleusercontent.com',
+            'secret': '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',
+            'key': ''
+        },
+        'SCOPE' : [
+            'profile',
+            'email',  
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+            'prompt': 'consent',
+        }
+    },
+    'github': {
+        'APP': {
+            'client_id': 'Ov23liPPFmqllXJ35bTx',
+            'secret': 'fa641f3d4aa722889574f3ad0ea39ba94608b059',
+            'key': ''
+        },
+        'SCOPE': [
+            'user',
+        ],
+        'AUTH_PARAMS':{
+            'access_type': 'online',
+            'prompt': 'consent',
+        }
+
+    },
+}
+
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
+SOCIALACCOUNT_LOGIN_ON_GET = True

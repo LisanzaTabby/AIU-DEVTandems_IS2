@@ -1,5 +1,5 @@
 {% extends 'main.html' %}
-
+{% load socialaccount%}
 {% block content %}
 {% if page == 'login' %}
 <main class="auth layout">
@@ -32,19 +32,14 @@
           <hr><br>
           <div class="email_login">
             <div class="email_login_icons">
-              <a href="">
+              <a href="{% provider_login_url 'google' %}">
                 <i class="fa-brands fa-google fa-2xl" style="color: #e93644;"></i>
               </a>
             </div>
             <div class="email_login_icons">
-              <a href="">
+              <a href="{% provider_login_url 'github' %}">
                 <i class="fa-brands fa-github fa-2xl" style="color: #e93644;"></i>  
               </a>            
-            </div>
-            <div class="email_login_icons">
-              <a href="">
-                <i class="fa-solid fa-envelope fa-2xl" style="color: #e93644;"></i>
-              </a>
             </div>
           </div>
           <button class="btn btn--main" type="submit">
@@ -121,19 +116,14 @@
           <hr><br>
           <div class="email_login">
             <div class="email_login_icons">
-              <a href="">
+              <a href="{% provider_login_url 'google' %}">
                 <i class="fa-brands fa-google fa-2xl" style="color: #e93644;"></i>
               </a>
             </div>
             <div class="email_login_icons">
-              <a href="">
+              <a href="{% provider_login_url 'github' %}">
                 <i class="fa-brands fa-github fa-2xl" style="color: #e93644;"></i>  
               </a>            
-            </div>
-            <div class="email_login_icons">
-              <a href="">
-                <i class="fa-solid fa-envelope fa-2xl" style="color: #e93644;"></i>
-              </a>
             </div>
           </div>
 
