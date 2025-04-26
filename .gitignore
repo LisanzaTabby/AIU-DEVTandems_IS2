@@ -403,4 +403,6 @@ FodyWeavers.xsd
 # DIO Diagrams
 *.dio
 # media files
-media
+media/
+.env
+et --soft HEAD~2

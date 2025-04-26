@@ -13,6 +13,11 @@ import os
 
 from pathlib import Path
 
+from environ import Env
+env = Env()
+env.read_env()
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -169,8 +174,8 @@ SOCIALACCOUNT_PROVIDERS = {
         # (``socialaccount`` app) containing the required client
         # credentials, or list them here:
         'APP': {
-            'client_id': '#',
-            'secret': '#',
+            'client_id': env('OAUTH_GOOGLE_CLIENT_ID'),
+            'secret': env('OAUTH_GOOGLE_CLIENT_SECRET'),
             'key': ''
         },
         'SCOPE' : [
@@ -184,8 +189,8 @@ SOCIALACCOUNT_PROVIDERS = {
     },
     'github': {
         'APP': {
-            'client_id': '#',
-            'secret': '#',
+            'client_id': env('OAUTH_GITHUB_CLIENT_ID'),
+            'secret': env('OAUTH_GITHUB_SECRET'),
             'key': ''
         },
         'SCOPE': [
