@@ -23,11 +23,41 @@
             <a href="{% url 'update-user' %}" class="btn btn--main btn--pill">Edit Profile</a>
             {% endif %}
           </div>
+          <div class="socials">
+            <a href="{{user.email}}"target="_blank">
+              <i class="fa-brands fa-google" style="color: #e93644;"></i>
+            </a>
+            <a href="{{user.github}}"target="_blank">
+              <i class="fa-brands fa-github" style="color: #e93644;"></i>  
+            </a>
+            <a href="{{user.linkedin}}"target="_blank">
+              <i class="fa-brands fa-linkedin" style="color: #1656df;"></i>
+            </a>
+            <a href="{{user.twitter}}"target="_blank">
+              <i class="fa-brands fa-twitter" style="color: #e93644;"></i>
+            </a>
+            <a href="{{user.stackoverflow}}"target="_blank">
+              <i class="fa-brands fa-stack-overflow" style="color: #ffb13b;"></i>
+            </a>
+          </div>
           <div class="profile__about">
             <h2>About</h2>
             <p>
               {{user.bio}}
             </p>
+            <h2>Skills</h2>
+            <p>
+              {{user.skills}}
+            </p>
+            <h2>Experience</h2>
+            <p>
+              {{user.experience}}
+            </p>
+            <h2>Goals</h2>
+            <p>
+              {{user.goals}}
+            </p>
+            
           </div>
         </div>
 
