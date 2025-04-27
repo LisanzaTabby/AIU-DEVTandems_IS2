@@ -14,11 +14,6 @@ import os
 from pathlib import Path
 from environ import Env
 
-
-
-
-
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
@@ -208,3 +203,12 @@ SOCIALACCOUNT_PROVIDERS = {
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 SOCIALACCOUNT_LOGIN_ON_GET = True
+
+# Email settings
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'lisanzatabitha@gmail.com'  # your email
+EMAIL_HOST_PASSWORD = 'lanvscnecmacokuu'  # app password from Google
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER

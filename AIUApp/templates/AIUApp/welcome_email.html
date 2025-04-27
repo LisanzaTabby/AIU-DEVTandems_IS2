@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            align-items: center;
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            padding: 20px;
+        }
+        img{
+            align-content: center;
+        }
+        .email-container {
+            background-color: #949c9c;
+            border-radius: 8px;
+            padding: 20px;
+            border: 1px solid #dddddd;
+        }
+        .header {
+            font-size: 24px;
+            font-weight: bold;
+            color: #e93644;
+            text-align: center;
+
+        }
+        .message {
+            margin-top: 20px;
+            font-size: 16px;
+            text-align: center;
+        }
+       
+        .message .button{
+            background-color: #e93644;
+            text-decoration: none;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 30px;
+            color: #fff;
+        }
+        .footer {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #e93644;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+    <img src="https://i.postimg.cc/1zK7m2n9/aiulogo.png" alt="AIU LOGO"><br><br>
+        <div class="header">🎉🎉 Welcome to AIUDEVTandem! 🚀</div>
+
+        <div class="message">
+            Hi {{ username }},<br><br>
+            We’re excited to have you onboard!<br><br>
+
+            Start exploring rooms, connect with fellow students, and grow your skills together! 🎯
+            
+            <a href="http://127.0.0.1:8000/login/" class="button">Login Now</a>
+
+        </div>
+
+
+        <div class="footer">
+            Thanks for joining us!<br>
+            - The AIUDEVTandem Team🚀
+        </div>
+    </div>
+</body>
+</html>
