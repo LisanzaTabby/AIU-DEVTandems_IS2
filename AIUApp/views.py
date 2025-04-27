@@ -2,6 +2,7 @@ from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponse
 from .models import Room, Topic, Message, User
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import get_backends
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.db.models import Q # allows us our query parameters in one basket so that we can have multiple query and search parameters such we can search using a topic, hostname or roomname
@@ -35,19 +36,26 @@ def loginPage(request):
 
 def registerPage(request):
     form = MyUserCreationForm()
+
     if request.method == 'POST':
         form = MyUserCreationForm(request.POST)
+
         if form.is_valid():
-            user = form.save(commit=False)# saving the form and freezing it in time so that we ca be able to use the username from the form
-            user.username = user.username.lower()#updated to alowercase
+            user = form.save(commit=False)
+            user.username = user.username.lower()  # Ensure username is lowercase
             user.save()
-            login(request, user)
+
+            # Manually set the backend before logging in the user
+            backend = get_backends()[0]  # Pick the first backend (default is usually ModelBackend)
+            user.backend = backend.__module__ + '.' + backend.__class__.__name__
+
+            login(request, user)  # Now login should work without error
             return redirect('home')
         else:
-            messages.error(request, 'An error Occured during registration!')
-    context={'form':form}
-    return render(request, 'AIUApp/login_register.html', context)
+            messages.error(request, 'An error occurred during registration!')
 
+    context = {'form': form}
+    return render(request, 'AIUApp/login_register.html', context)
 def logoutUser(request):
     logout(request)
     return redirect('home')
@@ -66,19 +74,22 @@ def index(request):
     return render(request, 'AIUApp/homepage.html', context)
 def rooms(request, pk):
     room = get_object_or_404(Room, id=pk)
-    room_messages = room.message_set.all()# we ar telling it get all a specific set of messages related to that specific room.Only for a Many-One R/ship thats when we use the _set.all()Method
-    participants = room.participants.all()# we use the all() for the many-Many r/ship
+    room_messages = room.message_set.all()  # Get all messages for this room
+    participants = room.participants.all()  # Get all participants for this room
+    
     if request.method == 'POST':
         message = Message.objects.create(
-            user = request.user,
-            room= room,
-            body= request.POST.get('body')
+            user=request.user,
+            room=room,
+            body=request.POST.get('body')
         )
-        room.participants.add(request.user)# adds a user to the participants of a room
-        messages.success(request, 'Message sent successfully!')
-        return redirect('room', pk=room.id)
-    context={'room': room, 'room_messages':room_messages,'participants':participants}
-    return render(request, 'AIUApp/room.html', context)
+    context = {
+        'room': room,
+        'room_messages': room_messages,
+        'participants': participants
+    }
+    return render(request, 'AIUApp/room.html', context)  # Only render if GET request
+
 @login_required
 def userProfile(request, pk):
     user = get_object_or_404(User, id=pk)
