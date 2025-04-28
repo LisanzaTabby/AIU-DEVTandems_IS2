@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-+w(ps4@m(7t2gnh9b_n&+srj0t-#7+6*=e6a1q+yr3i0a1)=0l
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.vercel.app','127.0.0.1']
 
 env = Env()
 env.read_env(os.path.join(BASE_DIR, '.env1'))
