@@ -13,8 +13,8 @@
         <mxCell id="EUNmY-h1S2OqMyLc_rIC-3" value="" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=light-dark(#FFFFFF,#FFFFFF);strokeColor=light-dark(#000000,#CC0000);" vertex="1" parent="1">
           <mxGeometry x="690" y="135" width="60" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="EUNmY-h1S2OqMyLc_rIC-4" value="&lt;b&gt;Database&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="685" y="215" width="80" height="30" as="geometry" />
+        <mxCell id="EUNmY-h1S2OqMyLc_rIC-4" value="&lt;b&gt;Application Server&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="660" y="215" width="130" height="30" as="geometry" />
         </mxCell>
         <mxCell id="EUNmY-h1S2OqMyLc_rIC-8" value="User Requests" style="endArrow=block;endFill=1;html=1;edgeStyle=orthogonalEdgeStyle;align=left;verticalAlign=top;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" target="EUNmY-h1S2OqMyLc_rIC-2">
           <mxGeometry x="-1" relative="1" as="geometry">
@@ -25,7 +25,7 @@
         <mxCell id="EUNmY-h1S2OqMyLc_rIC-9" value="1" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=bottom;" connectable="0" vertex="1" parent="EUNmY-h1S2OqMyLc_rIC-8">
           <mxGeometry x="-1" relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="EUNmY-h1S2OqMyLc_rIC-12" value="name" style="endArrow=block;endFill=1;html=1;edgeStyle=orthogonalEdgeStyle;align=left;verticalAlign=top;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=52.5;entryPerimeter=0;" edge="1" parent="1" source="EUNmY-h1S2OqMyLc_rIC-2" target="EUNmY-h1S2OqMyLc_rIC-3">
+        <mxCell id="EUNmY-h1S2OqMyLc_rIC-12" value="HTTP Request" style="endArrow=block;endFill=1;html=1;edgeStyle=orthogonalEdgeStyle;align=left;verticalAlign=top;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=52.5;entryPerimeter=0;" edge="1" parent="1" source="EUNmY-h1S2OqMyLc_rIC-2" target="EUNmY-h1S2OqMyLc_rIC-3">
           <mxGeometry x="-1" relative="1" as="geometry">
             <mxPoint x="500" y="170" as="sourcePoint" />
             <mxPoint x="660" y="170" as="targetPoint" />
@@ -33,6 +33,78 @@
         </mxCell>
         <mxCell id="EUNmY-h1S2OqMyLc_rIC-13" value="1" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=bottom;" connectable="0" vertex="1" parent="EUNmY-h1S2OqMyLc_rIC-12">
           <mxGeometry x="-1" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="EUNmY-h1S2OqMyLc_rIC-16" value="&lt;b&gt;Students&lt;/b&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" vertex="1" parent="1">
+          <mxGeometry x="140" y="340" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="EUNmY-h1S2OqMyLc_rIC-19" value="" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=light-dark(#FFFFFF,#CC0000);strokeColor=light-dark(#000000,#000000);" vertex="1" parent="1">
+          <mxGeometry x="695" y="320" width="60" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="EUNmY-h1S2OqMyLc_rIC-20" value="" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=light-dark(#FFFFFF,#FFFFFF);strokeColor=light-dark(#000000,#CC0000);" vertex="1" parent="1">
+          <mxGeometry x="420" y="330" width="60" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="EUNmY-h1S2OqMyLc_rIC-21" value="&lt;b&gt;Application Server&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="390" y="420" width="130" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="EUNmY-h1S2OqMyLc_rIC-22" value="&lt;b&gt;AIUDEVTandemsDatabase&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="660" y="410" width="170" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="EUNmY-h1S2OqMyLc_rIC-23" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.3333333333333333;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0;entryDx=0;entryDy=27.5;entryPerimeter=0;" edge="1" parent="1" source="EUNmY-h1S2OqMyLc_rIC-16" target="EUNmY-h1S2OqMyLc_rIC-20">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="240" y="420" as="sourcePoint" />
+            <mxPoint x="290" y="370" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="EUNmY-h1S2OqMyLc_rIC-25" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0;exitDx=0;exitDy=27.5;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="EUNmY-h1S2OqMyLc_rIC-20" target="EUNmY-h1S2OqMyLc_rIC-19">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="485" y="359.5" as="sourcePoint" />
+            <mxPoint x="560" y="470" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="EUNmY-h1S2OqMyLc_rIC-26" value="&lt;b&gt;Student&lt;/b&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" vertex="1" parent="1">
+          <mxGeometry x="140" y="500" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="EUNmY-h1S2OqMyLc_rIC-29" value="AIUDEVTandems" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=14;fillColor=light-dark(#FFFFFF,#990000);" vertex="1" parent="1">
+          <mxGeometry x="330" y="470" width="210" height="168" as="geometry" />
+        </mxCell>
+        <mxCell id="EUNmY-h1S2OqMyLc_rIC-30" value="Create rooms&lt;div&gt;message in the rooms&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;" vertex="1" parent="EUNmY-h1S2OqMyLc_rIC-29">
+          <mxGeometry y="26" width="210" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="EUNmY-h1S2OqMyLc_rIC-31" value="Edit personal Profile" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;" vertex="1" parent="EUNmY-h1S2OqMyLc_rIC-29">
+          <mxGeometry y="70" width="210" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="EUNmY-h1S2OqMyLc_rIC-32" value="Delete, and edit rooms and personal room messages" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;" vertex="1" parent="EUNmY-h1S2OqMyLc_rIC-29">
+          <mxGeometry y="114" width="210" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="EUNmY-h1S2OqMyLc_rIC-33" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.3333333333333333;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="EUNmY-h1S2OqMyLc_rIC-26" target="EUNmY-h1S2OqMyLc_rIC-30">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="220" y="680" as="sourcePoint" />
+            <mxPoint x="270" y="630" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="EUNmY-h1S2OqMyLc_rIC-46" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="150" y="700" width="380" height="168" as="geometry" />
+        </mxCell>
+        <mxCell id="EUNmY-h1S2OqMyLc_rIC-38" value="Administrator" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="EUNmY-h1S2OqMyLc_rIC-46">
+          <mxGeometry y="26" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="EUNmY-h1S2OqMyLc_rIC-39" value="AIUDEVTandems" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=14;fillColor=light-dark(#FFFFFF,#990000);" vertex="1" parent="EUNmY-h1S2OqMyLc_rIC-46">
+          <mxGeometry x="170" width="210" height="168" as="geometry" />
+        </mxCell>
+        <mxCell id="EUNmY-h1S2OqMyLc_rIC-40" value="Create rooms&lt;div&gt;message in the rooms&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;" vertex="1" parent="EUNmY-h1S2OqMyLc_rIC-39">
+          <mxGeometry y="26" width="210" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="EUNmY-h1S2OqMyLc_rIC-41" value="Edit personal Profile" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;" vertex="1" parent="EUNmY-h1S2OqMyLc_rIC-39">
+          <mxGeometry y="70" width="210" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="EUNmY-h1S2OqMyLc_rIC-42" value="Delete, and edit rooms and personal room messages&lt;div&gt;&amp;nbsp;==super()&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;" vertex="1" parent="EUNmY-h1S2OqMyLc_rIC-39">
+          <mxGeometry y="114" width="210" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="EUNmY-h1S2OqMyLc_rIC-44" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.3333333333333333;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="EUNmY-h1S2OqMyLc_rIC-46" source="EUNmY-h1S2OqMyLc_rIC-38" target="EUNmY-h1S2OqMyLc_rIC-40">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="80" y="130" as="sourcePoint" />
+            <mxPoint x="130" y="80" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>
