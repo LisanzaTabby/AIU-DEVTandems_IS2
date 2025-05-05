@@ -1,9 +1,39 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36" version="26.2.14">
   <diagram name="Page-1" id="OflcWy_7UG4nExT_85gr">
-    <mxGraphModel>
+    <mxGraphModel dx="1025" dy="464" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="EUNmY-h1S2OqMyLc_rIC-1" value="&lt;b&gt;Students&lt;/b&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" vertex="1" parent="1">
+          <mxGeometry x="140" y="150" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="EUNmY-h1S2OqMyLc_rIC-2" value="&lt;b&gt;Web Browser&lt;/b&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#330000);" vertex="1" parent="1">
+          <mxGeometry x="355" y="140" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="EUNmY-h1S2OqMyLc_rIC-3" value="" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=light-dark(#FFFFFF,#FFFFFF);strokeColor=light-dark(#000000,#CC0000);" vertex="1" parent="1">
+          <mxGeometry x="690" y="135" width="60" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="EUNmY-h1S2OqMyLc_rIC-4" value="&lt;b&gt;Database&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="685" y="215" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="EUNmY-h1S2OqMyLc_rIC-8" value="User Requests" style="endArrow=block;endFill=1;html=1;edgeStyle=orthogonalEdgeStyle;align=left;verticalAlign=top;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" target="EUNmY-h1S2OqMyLc_rIC-2">
+          <mxGeometry x="-1" relative="1" as="geometry">
+            <mxPoint x="170" y="170" as="sourcePoint" />
+            <mxPoint x="330" y="170" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="EUNmY-h1S2OqMyLc_rIC-9" value="1" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=bottom;" connectable="0" vertex="1" parent="EUNmY-h1S2OqMyLc_rIC-8">
+          <mxGeometry x="-1" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="EUNmY-h1S2OqMyLc_rIC-12" value="name" style="endArrow=block;endFill=1;html=1;edgeStyle=orthogonalEdgeStyle;align=left;verticalAlign=top;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=52.5;entryPerimeter=0;" edge="1" parent="1" source="EUNmY-h1S2OqMyLc_rIC-2" target="EUNmY-h1S2OqMyLc_rIC-3">
+          <mxGeometry x="-1" relative="1" as="geometry">
+            <mxPoint x="500" y="170" as="sourcePoint" />
+            <mxPoint x="660" y="170" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="EUNmY-h1S2OqMyLc_rIC-13" value="1" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=bottom;" connectable="0" vertex="1" parent="EUNmY-h1S2OqMyLc_rIC-12">
+          <mxGeometry x="-1" relative="1" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
