@@ -1,7 +1,9 @@
 
 # AIU Developers-Connection Platform (AIUDEVTANDEMS)
 
-![Uploading image.png…]()
+
+![image](https://github.com/user-attachments/assets/152ae55f-bbae-4ba5-a486-e16df8fcdbbb)
+
 
 
 ## 📘 Project Overview
