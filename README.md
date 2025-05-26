@@ -107,6 +107,4 @@ This project is developed for academic purposes and is not licensed for commerci
 
 ## 🤝 Acknowledgements
 
-- Africa International University (AIU)
-- Lecturer Jared Maranga Mayieka
 - Django, PostgreSQL, and Django-Allauth open-source communities
